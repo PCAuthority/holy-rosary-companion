@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#142b46"><title>Holy Rosary Companion</title>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#142b46"><meta name="description" content="A bilingual English and Filipino guide to praying the Holy Rosary."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-192.png"><title>Holy Rosary Companion</title>
 <style>
 :root{--b:#142b46;--g:#c7a45a;--i:#f8f4ea;--p:#fffdf8;--s:#526b59;--ink:#29384a;--line:#e5dcc9}*{box-sizing:border-box}body{margin:0;background:var(--i);color:var(--ink);font:16px/1.6 system-ui,Arial}header{background:linear-gradient(120deg,#142b46,#274966);color:white;padding:18px max(18px,calc((100% - 1100px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.mark{border:1px solid var(--g);color:#e8ce8d;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;font:30px Georgia}.brand h1{font:22px Georgia;margin:0}.brand small{color:#d5deea}.shell{max-width:1100px;margin:auto;padding:24px 18px}.hero,.panel,.card{background:var(--p);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 10px 30px #142b4610}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center;background:linear-gradient(130deg,#fffdf8,#f0e7d4)}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--s);font-weight:800}h2{font:34px/1.2 Georgia;color:var(--b);margin:8px 0}h3{font:24px Georgia;color:var(--b);margin:5px 0}p{color:#5e6b7a}.art{min-height:210px;border-radius:18px;background:radial-gradient(circle,#fff4d2,#b99b5e);display:grid;place-items:center;font:120px Georgia;color:#fff9e8;text-shadow:0 3px 8px #725b32}.btn,button,select,input,textarea{font:inherit}.btn,button{border:0;border-radius:12px;padding:11px 15px;cursor:pointer;font-weight:650}.primary{background:var(--b);color:white}.secondary{background:white;color:var(--b);border:1px solid var(--line)}.gold{background:var(--g);color:#142b46}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tab{white-space:nowrap;background:#fffdf8;color:var(--b);border:1px solid var(--line)}.tab.active{background:var(--b);color:white}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0}.card{box-shadow:none;padding:18px}.card p{font-size:14px}.hidden{display:none!important}.sectionhead{margin:24px 0 10px}.panel{margin-top:16px}.prayer{text-align:center;max-width:780px;margin:auto}.prayertext{font:21px/1.85 Georgia;white-space:pre-line;margin:25px auto;max-width:700px}.beads{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px}.bead{width:23px;height:23px;border-radius:50%;background:#e7d8b3;border:2px solid #b89a59}.bead.done{background:var(--s);border-color:var(--s)}.bead.cur{background:var(--g);outline:4px solid #c7a45a35}.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}.field{display:grid;gap:5px;margin:12px 0}.field input,.field select,.field textarea,header select{padding:11px;border-radius:10px;border:1px solid var(--line);background:white;color:var(--b)}.field label{font-weight:700;font-size:13px;color:var(--b)}.row{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.small{font-size:12px;color:#778391}.foot{text-align:center;padding:28px;color:#778391;font-size:12px}@media(max-width:700px){.hero{grid-template-columns:1fr}.art{min-height:120px;font-size:80px}.grid{grid-template-columns:1fr}.prayertext{font-size:18px}h2{font-size:30px}}
 
@@ -8,6 +8,11 @@
 .global-nav button:disabled{opacity:.45;cursor:not-allowed}
 #mnote{min-height:1.4em;margin:14px auto 0;color:#876a2f;font-weight:700}
 @media(max-width:560px){.global-nav{padding:0 14px}.global-nav button{flex:1;min-width:0}}
+
+.site-footer{max-width:1100px;margin:28px auto 0;padding:18px 20px 24px;text-align:center;color:#776b58;font-size:.82rem;border-top:1px solid rgba(130,110,75,.22)}
+.site-footer p{margin:0;line-height:1.5}
+@media(max-width:560px){.site-footer{margin-top:20px;padding:16px 14px 22px;font-size:.78rem}}
+
 </style>
 <header><div class="brand"><div class="mark">✝</div><div><h1>Holy Rosary Companion</h1><small id="tag">A quiet place to pray</small></div></div><label>Language <select id="lang"><option value="en">English</option><option value="fil">Filipino</option></select></label></header>
 <div class="global-nav" aria-label="Page navigation">
@@ -64,4 +69,17 @@ function applyLanguage(){document.documentElement.lang=lang;$("back-label").text
 $("global-home").onclick=()=>{pageHistory=[];show("home",false);};
 $("global-back").onclick=()=>{if(pageHistory.length){const prior=pageHistory.pop();show(prior,false);}};
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>show(b.dataset.page));$("start").onclick=()=>start(activeSet());$("resume").onclick=()=>{loadSession();if(!steps.length)start(activeSet());else{renderStep();show("prayer")}};$("next").onclick=()=>advance(1);$("prev").onclick=()=>advance(-1);$("restart").onclick=()=>start(chosen);$("return").onclick=()=>{saveSession();show("home")};$("lang").onchange=e=>{lang=e.target.value;localStorage.setItem("hrc-lang",lang);applyLanguage()};$("lang2").onchange=e=>{$("lang").value=e.target.value;$("lang").dispatchEvent(new Event("change"))};$("fontsize").onchange=e=>$("stext").style.fontSize=e.target.value+"px";$("search").oninput=renderPrayerList;$("add").onclick=()=>{let v=$("intxt").value.trim();if(!v)return;let a=JSON.parse(localStorage.getItem("hrc-intentions")||"[]");a.unshift(v);localStorage.setItem("hrc-intentions",JSON.stringify(a));$("intxt").value="";renderIntentions()};$("save").onclick=()=>{mysteryMode=$("mysterymode").value;chosen=$("setselect").value;localStorage.setItem("hrc-mode",mysteryMode);localStorage.setItem("hrc-set",chosen);$("saved").textContent=L().saved;applyLanguage()};Object.keys(sets).forEach(k=>{let o=document.createElement("option");o.value=k;o.textContent=sets[k].en;$("setselect").append(o)});$("setselect").value=chosen;$("mysterymode").value=mysteryMode;loadSession();applyLanguage();$("global-back").disabled=pageHistory.length===0;
-document.addEventListener("visibilitychange",()=>{if(!document.hidden){applyLanguage()}});</script></html>
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){applyLanguage()}});
+if ("serviceWorker" in navigator &&
+    (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Offline setup unavailable:", err));
+  });
+}
+</script>
+
+<footer class="site-footer" aria-label="Copyright">
+  <p>© 2026 PCANetwork. All Rights Reserved.</p>
+</footer>
+
+</html>
